@@ -15,6 +15,13 @@ FROM retirement_titles
 WHERE (to_date = '9999-01-01')
 ORDER BY emp_no, to_date DESC;
 
+-- Create retiring_titles table
+SELECT COUNT (title), title
+INTO retiring_titles
+FROM unique_titles
+GROUP BY title
+ORDER BY COUNT (title) DESC;
+
 -- Deliverable 2
 -- Create mentorship_eligibility table
 SELECT DISTINCT ON (e.emp_no) e.emp_no, e.first_name, e.last_name, e.birth_date, de.from_date, de.to_date, t.title
